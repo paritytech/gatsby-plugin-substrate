@@ -1,21 +1,27 @@
-import cx from 'classnames';
-import React, { Fragment } from 'react';
+import cx from "classnames";
+import React, { Fragment } from "react";
 
-import { useBanner } from '../hooks/use-banner';
-import { useSessionStorage } from '../hooks/use-session-storage';
-import { Icon } from './Icon';
+import { useBanner } from "../hooks/use-banner";
+import { useSessionStorage } from "../hooks/use-session-storage";
+import { Icon } from "./Icon";
 
 const Banner = () => {
-  const [isBannerOpen, setIsBannerOpen] = useSessionStorage('banner', true);
+  const [isBannerOpen, setIsBannerOpen] = useSessionStorage("banner", true);
   const { banners } = useBanner();
   const hasActiveBanner = banners.length > 0;
+
+  const handleKeypress = (e) => {
+    if (e.key === "Enter") {
+      setIsBannerOpen(false);
+    }
+  };
 
   return (
     <>
       {hasActiveBanner && isBannerOpen && (
         <div
           className={cx(
-            'hidden md:block fixed z-50 right-10 bottom-8 max-w-sm p-6 transition-all text-white dark:text-black dark:bg-substrateGray bg-substrateBlackish m-0 shadow-xxl rounded-md'
+            "hidden md:block fixed z-50 right-10 bottom-8 max-w-sm p-6 transition-all text-white dark:text-black dark:bg-substrateGray bg-substrateBlackish m-0 shadow-xxl rounded-md"
           )}
         >
           {banners.map(
@@ -29,9 +35,13 @@ const Banner = () => {
               idx
             ) => (
               <Fragment key={idx}>
-                {idx > 0 && <hr className="mt-3 mb-2 border-substrateDarkThemeGrey dark:border-substrateSubtleGrey" />}
+                {idx > 0 && (
+                  <hr className="mt-3 mb-2 border-substrateDarkThemeGrey dark:border-substrateSubtleGrey" />
+                )}
                 <div className="banner">
-                  <span className="block pr-2 mb-2 font-bold text-xl">{title}</span>
+                  <span className="block pr-2 mb-2 font-bold text-xl">
+                    {title}
+                  </span>
                   <div
                     dangerouslySetInnerHTML={{ __html: html }}
                     className="underline-animate underline-animate-thin"
@@ -41,12 +51,13 @@ const Banner = () => {
             )
           )}
 
-          <div
+          <button
             className="absolute right-4 top-4 cursor-pointer duration-150 ease-in-out hover:scale-110"
             onClick={() => setIsBannerOpen(false)}
+            onKeyPress={handleKeypress}
           >
             <Icon name="close-x" className="fill-current h-4 w-4" />
-          </div>
+          </button>
         </div>
       )}
     </>
