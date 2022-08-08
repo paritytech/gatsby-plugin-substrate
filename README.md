@@ -4,7 +4,7 @@
 
 1. If this is your firs time installing the plugin as a submodule, please run
 
-`git submodule add https://github.com/paritytech/substrate-plugin.git plugins/gatsby-plugin-substrate`
+`git submodule add https://github.com/paritytech/gatsby-plugin-substrate.git plugins/gatsby-plugin-substrate`
 
 2. Add `"gatsby-plugin-substrate": "./plugins/gatsby-plugin-substrate"` as a dependency in your `package.json`
 
