@@ -1,33 +1,28 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import { useState, useEffect } from "react";
+
+const githubBannersJSON =
+  "https://raw.githubusercontent.com/paritytech/substrate-website-banner/main/banners.json";
 
 const useBanner = () => {
-  const {
-    allMarkdownRemark: { edges: banners },
-  } = useStaticQuery(
-    graphql`
-      query {
-        allMarkdownRemark(
-          filter: {
-            fileAbsolutePath: { regex: "//(banner)./(?!(__readme__))/" }
-            frontmatter: { active: { eq: true } }
-          }
-          sort: { fields: fields___slug, order: ASC }
-          limit: 2
-        ) {
-          edges {
-            node {
-              html
-              frontmatter {
-                title
-              }
-            }
-          }
-        }
-      }
-    `
-  );
+  const [banners, setBanners] = useState([]);
 
-  return { banners };
+  useEffect(() => {
+    const getBanners = async () => {
+      try {
+        const response = await fetch(githubBannersJSON);
+        const bannerInfo = await response.json();
+
+        const activeBanners = bannerInfo.filter((banner) => banner.active);
+        setBanners(activeBanners.slice(0, 2));
+      } catch (error) {
+        setBanners([]);
+      }
+    };
+
+    getBanners();
+  }, []);
+
+  return banners;
 };
 
 export { useBanner };

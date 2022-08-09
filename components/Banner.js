@@ -7,7 +7,7 @@ import { Icon } from "./Icon";
 
 const Banner = () => {
   const [isBannerOpen, setIsBannerOpen] = useSessionStorage("banner", true);
-  const { banners } = useBanner();
+  const banners = useBanner();
   const hasActiveBanner = banners.length > 0;
 
   const handleKeypress = (e) => {
@@ -24,32 +24,22 @@ const Banner = () => {
             "hidden md:block fixed z-50 right-10 bottom-8 max-w-sm p-6 transition-all text-white dark:text-black dark:bg-substrateGray bg-substrateBlackish m-0 shadow-xxl rounded-md"
           )}
         >
-          {banners.map(
-            (
-              {
-                node: {
-                  html,
-                  frontmatter: { title },
-                },
-              },
-              idx
-            ) => (
-              <Fragment key={idx}>
-                {idx > 0 && (
-                  <hr className="mt-3 mb-2 border-substrateDarkThemeGrey dark:border-substrateSubtleGrey" />
-                )}
-                <div className="banner">
-                  <span className="block pr-2 mb-2 font-bold text-xl">
-                    {title}
-                  </span>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: html }}
-                    className="underline-animate underline-animate-thin"
-                  ></div>
-                </div>
-              </Fragment>
-            )
-          )}
+          {banners.map(({ html, title }, idx) => (
+            <Fragment key={idx}>
+              {idx > 0 && (
+                <hr className="mt-3 mb-2 border-substrateDarkThemeGrey dark:border-substrateSubtleGrey" />
+              )}
+              <div className="banner">
+                <span className="block pr-2 mb-2 font-bold text-xl">
+                  {title}
+                </span>
+                <div
+                  dangerouslySetInnerHTML={{ __html: html }}
+                  className="underline-animate underline-animate-thin"
+                ></div>
+              </div>
+            </Fragment>
+          ))}
 
           <button
             className="absolute right-4 top-4 cursor-pointer duration-150 ease-in-out hover:scale-110"
