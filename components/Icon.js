@@ -106,6 +106,7 @@ import {
   Se2,
   Search,
   Secure,
+  DocsIcon,
   Security,
   Seminar,
   ShieldCheckSolid,
@@ -266,6 +267,7 @@ const iconsMap = {
   parathread: Parathread,
   "become-parathread": BecomeParathread,
   copy: Copy,
+  "docs-icon": DocsIcon,
 
   search: Search,
   htgIcon: Htg,
