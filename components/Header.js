@@ -31,16 +31,19 @@ const Header = ({ mode, header }) => {
 
   return (
     <header
-      className={cx("sticky top-0 z-40 border-b", {
-        "border-gray-200 dark:border-substrateDarkThemeGrey": mode !== "full",
-        "border-transparent dark:border-transparent":
-          mode === "full" && !isScrolled,
-        "bg-transparent transition-colors": header === "home" && !isScrolled,
-        "bg-white dark:bg-substrateDarkest":
-          header === "default" || (header === "home" && isScrolled),
-        "duration-75": header === "home" && !isScrolled,
-        "duration-200": header === "home" && isScrolled,
-      })}
+      className={cx(
+        "sticky top-0 z-40 border-b border-gray-200 dark:border-substrateDarkThemeGrey",
+        {
+          "border-transparent dark:border-transparent":
+            mode === "full" && !isScrolled,
+          "bg-transparent transition-colors border-transparent dark:border-transparent":
+            header === "home" && !isScrolled,
+          "bg-white dark:bg-substrateDarkest":
+            header === "default" || (header === "home" && isScrolled),
+          "duration-75": header === "home" && !isScrolled,
+          "duration-200": header === "home" && isScrolled,
+        }
+      )}
     >
       <div className="px-4 xl:px-12">
         <div
