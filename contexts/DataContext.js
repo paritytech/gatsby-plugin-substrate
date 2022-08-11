@@ -1,17 +1,18 @@
-import React from 'react';
+import React from "react";
+import { useBanner } from "../hooks/use-banner";
 
-const serializePathname = pathname => {
+const serializePathname = (pathname) => {
   // trailing slash would add empty array item
-  if (pathname !== '/') pathname = pathname.replace(/\/$/, '');
+  if (pathname !== "/") pathname = pathname.replace(/\/$/, "");
 
-  const pathnames = pathname.toString().split('/');
+  const pathnames = pathname.toString().split("/");
   // remove empty string item before first '/'
   pathnames.shift();
   return pathnames;
 };
 
-const toTitleCase = str => {
-  str = str.replace(/[-]/g, ' ');
+const toTitleCase = (str) => {
+  str = str.replace(/[-]/g, " ");
   return str.replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
@@ -19,24 +20,25 @@ const toTitleCase = str => {
 
 // TODO: sequencialize data context
 
-const pageSlug = pathArray => {
+const pageSlug = (pathArray) => {
   return pathArray[pathArray.length - 1];
 };
 
-const pageTitle = pathArray => {
+const pageTitle = (pathArray) => {
   const pageSlug = pathArray[pathArray.length - 1];
   return toTitleCase(pageSlug);
 };
 
 const defaultContext = {
-  pathArray: new Array('', '', ''),
-  pageTitle: '',
+  pathArray: new Array("", "", ""),
+  pageTitle: "",
 };
 
 const DataContext = React.createContext(defaultContext);
 
 const DataProvider = ({ children, props }) => {
   const { location, pageContext } = props;
+  const banners = useBanner();
 
   return (
     <DataContext.Provider
@@ -46,6 +48,7 @@ const DataProvider = ({ children, props }) => {
         pageSlug: pageSlug(serializePathname(location.pathname)),
         pageTitle: pageTitle(serializePathname(location.pathname)),
         pageContext,
+        banners,
       }}
     >
       {children}
