@@ -1,13 +1,13 @@
 import cx from "classnames";
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 
-import { useBanner } from "../hooks/use-banner";
+import { DataContext } from "../contexts";
 import { useSessionStorage } from "../hooks/use-session-storage";
 import { Icon } from "./Icon";
 
 const Banner = () => {
   const [isBannerOpen, setIsBannerOpen] = useSessionStorage("banner", true);
-  const banners = useBanner();
+  const { banners } = useContext(DataContext);
   const hasActiveBanner = banners.length > 0;
 
   const handleKeypress = (e) => {
