@@ -31,8 +31,9 @@ const Header = ({ mode, header }) => {
 
   return (
     <header
+      id="header"
       className={cx(
-        "sticky top-0 z-40 border-b border-gray-200 dark:border-substrateDarkThemeGrey",
+        "sticky z-30 top-0 border-b border-gray-200 dark:border-substrateDarkThemeGrey",
         {
           "border-transparent dark:border-transparent":
             mode === "full" && !isScrolled,

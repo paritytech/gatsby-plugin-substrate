@@ -1,12 +1,12 @@
-import cx from 'classnames';
-import { useTranslation } from 'gatsby-plugin-react-i18next';
-import React, { useState } from 'react';
+import cx from "classnames";
+import { useTranslation } from "gatsby-plugin-react-i18next";
+import React, { useState } from "react";
 
-import { useSiteMenus } from '../hooks/use-site-menus';
-import { Icon } from './Icon';
-import { buildSubMenu, Link, LinkMenu } from './Link';
-import { MainLogo } from './MainLogo';
-import { ThemeToggle } from './ThemeToggle';
+import { useSiteMenus } from "../hooks/use-site-menus";
+import { Icon } from "./Icon";
+import { buildSubMenu, Link, LinkMenu } from "./Link";
+import { MainLogo } from "./MainLogo";
+import { ThemeToggle } from "./ThemeToggle";
 
 const NavMobileSubMenuItem = ({ data }) => {
   const { t } = useTranslation();
@@ -14,24 +14,26 @@ const NavMobileSubMenuItem = ({ data }) => {
   const [isChildMenuOpen, setIsChildMenuOpen] = useState(false);
 
   const itemStyle =
-    'block relative text-black dark:text-white hover:no-underline px-6 py-3 text-lg hover:font-bold font-medium cursor-pointer';
+    "block relative text-black dark:text-white hover:no-underline px-6 py-3 text-lg hover:font-bold font-medium cursor-pointer";
 
   return (
     <>
       {childMenu ? (
         <div onClick={() => setIsChildMenuOpen(!isChildMenuOpen)}>
           <div className={cx(itemStyle)}>
-            <span className={cx({ 'font-bold': isChildMenuOpen })}>{t(subMenuItem.id)}</span>
+            <span className={cx({ "font-bold": isChildMenuOpen })}>
+              {t(subMenuItem.id)}
+            </span>
             <Icon
               name="arrow-dropdown"
               className={cx(
-                'absolute transform right-0 top-0 mr-6 mt-4 w-6 h-6 fill-current text-black dark:text-white',
-                { 'rotate-180': isChildMenuOpen }
+                "absolute transform right-0 top-0 mr-6 mt-4 w-6 h-6 fill-current text-black dark:text-white",
+                { "rotate-180": isChildMenuOpen }
               )}
             />
           </div>
           <div className={cx({ hidden: !isChildMenuOpen })}>
-            {childMenu.map(childMenuItem => {
+            {childMenu.map((childMenuItem) => {
               return (
                 <div key={childMenuItem.id}>
                   <LinkMenu
@@ -48,7 +50,12 @@ const NavMobileSubMenuItem = ({ data }) => {
           </div>
         </div>
       ) : (
-        <LinkMenu className={itemStyle} prefix={menuItem.url} slug={subMenuItem.url} internal={subMenuItem.internal}>
+        <LinkMenu
+          className={itemStyle}
+          prefix={menuItem.url}
+          slug={subMenuItem.url}
+          internal={subMenuItem.internal}
+        >
           {t(subMenuItem.id)}
         </LinkMenu>
       )}
@@ -65,14 +72,22 @@ const NavMobileSubMenu = ({ menuItem, handleSubMenu }) => {
     <div className="absolute inset-0 bg-substrateGray-light dark:bg-substrateDarkest h-screen animate-fade-in-right">
       <div className="bg-substrateGreen-light dark:bg-green-700">
         <div className="px-6 h-16 flex items-center justify-between">
-          <div className="absolute left-0 top-0 p-6 -mt-0.5 cursor-pointer" onClick={() => handleSubMenu(false)}>
-            <Icon name="arrow-back" className="fill-current text-black dark:text-white" />
+          <div
+            className="absolute left-0 top-0 p-6 -mt-0.5 cursor-pointer"
+            onClick={() => handleSubMenu(false)}
+          >
+            <Icon
+              name="arrow-back"
+              className="fill-current text-black dark:text-white"
+            />
           </div>
-          <div className="text-xl font-bold w-full text-center">{t(menuItem.id)}</div>
+          <div className="text-xl font-bold w-full text-center">
+            {t(menuItem.id)}
+          </div>
         </div>
       </div>
       <div className="pt-7 h-[calc(100vh-100px)] overflow-auto">
-        {subMenu.map(subMenuItem => {
+        {subMenu.map((subMenuItem) => {
           const child = subMenuItem.child;
           const childMenu = menus[child];
 
@@ -102,7 +117,10 @@ const NavMobileItem = ({ menuItem, handleSubMenu }) => {
     >
       <div className="flex items-center justify-between focus:outline-none cursor-pointer">
         <div className="text-2xl">{t(menuItem.id)}</div>
-        <Icon name="arrow-next" className="fill-current text-black dark:text-white w-5 h-5" />
+        <Icon
+          name="arrow-next"
+          className="fill-current text-black dark:text-white w-5 h-5"
+        />
       </div>
     </div>
   );
@@ -112,12 +130,12 @@ const NavMobile = ({ toggleMenu }) => {
   const { menus } = useSiteMenus();
   const [isMenuItemOpen, setIsMenuItemOpen] = useState(false);
 
-  const handleSubMenu = menuItem => {
+  const handleSubMenu = (menuItem) => {
     setIsMenuItemOpen(menuItem);
   };
 
   return (
-    <div className="navMobile lg:hidden absolute inset-0 bg-substrateGray-light dark:bg-substrateDarkest z-90 animate-fade-in-right">
+    <div className="navMobile lg:hidden absolute inset-0 bg-substrateGray-light dark:bg-substrateDarkest z-50 animate-fade-in-right">
       <div className="h-16 px-6 flex items-center justify-between">
         <div className="w-32">
           <Link to="/">
@@ -127,17 +145,34 @@ const NavMobile = ({ toggleMenu }) => {
       </div>
       <div className="bg-substrateGray-light dark:bg-substrateDarkest h-screen z-20">
         <div className="py-8">
-          {menus.main.map(menuItem => {
-            return <NavMobileItem key={menuItem.id} menuItem={menuItem} handleSubMenu={handleSubMenu} />;
+          {menus.main.map((menuItem) => {
+            return (
+              <NavMobileItem
+                key={menuItem.id}
+                menuItem={menuItem}
+                handleSubMenu={handleSubMenu}
+              />
+            );
           })}
         </div>
         <div className="px-6">
           <ThemeToggle />
         </div>
       </div>
-      {isMenuItemOpen && <NavMobileSubMenu menuItem={isMenuItemOpen} handleSubMenu={handleSubMenu} />}
-      <div className="absolute top-0 right-0 h-auto cursor-pointer p-6 -mt-0.5" onClick={toggleMenu}>
-        <Icon name="close-x" className="fill-current text-black dark:text-white" />
+      {isMenuItemOpen && (
+        <NavMobileSubMenu
+          menuItem={isMenuItemOpen}
+          handleSubMenu={handleSubMenu}
+        />
+      )}
+      <div
+        className="absolute top-0 right-0 h-auto cursor-pointer p-6 -mt-0.5"
+        onClick={toggleMenu}
+      >
+        <Icon
+          name="close-x"
+          className="fill-current text-black dark:text-white"
+        />
       </div>
     </div>
   );
