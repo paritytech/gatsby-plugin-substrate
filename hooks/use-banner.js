@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-const githubBannersJSON =
-  "https://raw.githubusercontent.com/paritytech/substrate-website-banner/main/banners.json";
+const githubBannersJSON = 'https://raw.githubusercontent.com/paritytech/substrate-website-banner/main/banners.json';
 
 const useBanner = () => {
   const [banners, setBanners] = useState([]);
@@ -12,7 +11,7 @@ const useBanner = () => {
         const response = await fetch(githubBannersJSON);
         const bannerInfo = await response.json();
 
-        const activeBanners = bannerInfo.filter((banner) => banner.active);
+        const activeBanners = bannerInfo.filter(banner => banner.active);
         setBanners(activeBanners.slice(0, 2));
       } catch (error) {
         setBanners([]);

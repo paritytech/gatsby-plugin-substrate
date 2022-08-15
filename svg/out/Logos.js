@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 function SvgLogos(props) {
   return (
@@ -42,7 +42,7 @@ function SvgLogos(props) {
       <mask
         id="logos_svg__a"
         style={{
-          maskType: "alpha",
+          maskType: 'alpha',
         }}
         width={60}
         height={60}
@@ -87,7 +87,7 @@ function SvgLogos(props) {
       <mask
         id="logos_svg__b"
         style={{
-          maskType: "alpha",
+          maskType: 'alpha',
         }}
         width={60}
         height={60}
@@ -98,10 +98,7 @@ function SvgLogos(props) {
         <circle cx={380} cy={420} r={30} fill="#C4C4C4" />
       </mask>
       <g mask="url(#logos_svg__b)">
-        <path
-          fill="url(#logos_svg__pattern3)"
-          d="M347.805 387.805H412.195V452.195H347.805z"
-        />
+        <path fill="url(#logos_svg__pattern3)" d="M347.805 387.805H412.195V452.195H347.805z" />
       </g>
       <path fill="url(#logos_svg__pattern4)" d="M193 33H253V86H193z" />
       <path fill="url(#logos_svg__pattern5)" d="M510 210H570V270H510z" />
@@ -240,63 +237,25 @@ function SvgLogos(props) {
           <stop stopColor="#10C5C5" />
           <stop offset={1} stopColor="#167897" />
         </linearGradient>
-        <pattern
-          id="logos_svg__pattern0"
-          width={1}
-          height={1}
-          patternContentUnits="objectBoundingBox"
-        >
+        <pattern id="logos_svg__pattern0" width={1} height={1} patternContentUnits="objectBoundingBox">
           <use transform="scale(.0009)" xlinkHref="#logos_svg__image0" />
         </pattern>
-        <pattern
-          id="logos_svg__pattern1"
-          width={1}
-          height={1}
-          patternContentUnits="objectBoundingBox"
-        >
+        <pattern id="logos_svg__pattern1" width={1} height={1} patternContentUnits="objectBoundingBox">
           <use transform="scale(.00568)" xlinkHref="#logos_svg__image1" />
         </pattern>
-        <pattern
-          id="logos_svg__pattern2"
-          width={1}
-          height={1}
-          patternContentUnits="objectBoundingBox"
-        >
+        <pattern id="logos_svg__pattern2" width={1} height={1} patternContentUnits="objectBoundingBox">
           <use transform="scale(.00093)" xlinkHref="#logos_svg__image2" />
         </pattern>
-        <pattern
-          id="logos_svg__pattern3"
-          width={1}
-          height={1}
-          patternContentUnits="objectBoundingBox"
-        >
+        <pattern id="logos_svg__pattern3" width={1} height={1} patternContentUnits="objectBoundingBox">
           <use transform="scale(.00667)" xlinkHref="#logos_svg__image3" />
         </pattern>
-        <pattern
-          id="logos_svg__pattern4"
-          width={1}
-          height={1}
-          patternContentUnits="objectBoundingBox"
-        >
-          <use
-            transform="matrix(.00483 0 0 .00546 -.007 0)"
-            xlinkHref="#logos_svg__image4"
-          />
+        <pattern id="logos_svg__pattern4" width={1} height={1} patternContentUnits="objectBoundingBox">
+          <use transform="matrix(.00483 0 0 .00546 -.007 0)" xlinkHref="#logos_svg__image4" />
         </pattern>
-        <pattern
-          id="logos_svg__pattern5"
-          width={1}
-          height={1}
-          patternContentUnits="objectBoundingBox"
-        >
+        <pattern id="logos_svg__pattern5" width={1} height={1} patternContentUnits="objectBoundingBox">
           <use transform="scale(.004)" xlinkHref="#logos_svg__image5" />
         </pattern>
-        <pattern
-          id="logos_svg__pattern6"
-          width={1}
-          height={1}
-          patternContentUnits="objectBoundingBox"
-        >
+        <pattern id="logos_svg__pattern6" width={1} height={1} patternContentUnits="objectBoundingBox">
           <use transform="scale(.002)" xlinkHref="#logos_svg__image6" />
         </pattern>
         <image

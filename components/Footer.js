@@ -1,10 +1,10 @@
-import { Link } from "gatsby";
-import React from "react";
+import { Link } from 'gatsby';
+import React from 'react';
 
-import { Icon } from "./Icon";
-import { NavFooter } from "./NavFooter";
-import { NavLegal } from "./NavLegal";
-import { Newsletter } from "./Newsletter";
+import { Icon } from './Icon';
+import { NavFooter } from './NavFooter';
+import { NavLegal } from './NavLegal';
+import { Newsletter } from './Newsletter';
 
 const Footer = ({ showNewsletter = true }) => {
   return (
