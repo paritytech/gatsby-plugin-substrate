@@ -10,9 +10,16 @@
   "author": " W3F/Parity WebOps <webops@web3.foundation>",
   "license": "0BSD",
   "scripts": {
+    "format": "prettier --config .prettierrc.js --write \"{**/*.{js,jsx,json},!**/*.{md}}\"",
     "svg": "npx @svgr/cli svg/raw --out-dir svg/out .svgorc.json"
   },
   "devDependencies": {
-    "@svgr/cli": "^5.4.0"
+    "@svgr/cli": "^5.4.0",
+    "prettier": "^2.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0"
   }
 }

@@ -1,15 +1,15 @@
-import cx from "classnames";
-import { Link } from "gatsby";
-import React, { useEffect, useState } from "react";
+import cx from 'classnames';
+import { Link } from 'gatsby';
+import React, { useEffect, useState } from 'react';
 
-import { WEBSITE_URL } from "../config/webConsts";
-import { useScrollListener } from "../hooks/use-scroll-listener";
-import { DocsButton } from "./DocsButton";
-import { Icon } from "./Icon";
-import { MainLogo } from "./MainLogo";
-import { NavMain } from "./NavMain";
-import { NavMobile } from "./NavMobile";
-import { ThemeToggle } from "./ThemeToggle";
+import { WEBSITE_URL } from '../config/webConsts';
+import { useScrollListener } from '../hooks/use-scroll-listener';
+import { DocsButton } from './DocsButton';
+import { Icon } from './Icon';
+import { MainLogo } from './MainLogo';
+import { NavMain } from './NavMain';
+import { NavMobile } from './NavMobile';
+import { ThemeToggle } from './ThemeToggle';
 
 const Header = ({ mode, header }) => {
   const scroll = useScrollListener();
@@ -31,29 +31,21 @@ const Header = ({ mode, header }) => {
 
   return (
     <header
-      className={cx(
-        "sticky top-0 z-40 border-b border-gray-200 dark:border-substrateDarkThemeGrey",
-        {
-          "border-transparent dark:border-transparent":
-            mode === "full" && !isScrolled,
-          "bg-transparent transition-colors border-transparent dark:border-transparent":
-            header === "home" && !isScrolled,
-          "bg-white dark:bg-substrateDarkest":
-            header === "default" || (header === "home" && isScrolled),
-          "duration-75": header === "home" && !isScrolled,
-          "duration-200": header === "home" && isScrolled,
-        }
-      )}
+      id="header"
+      className={cx('sticky z-30 top-0 border-b border-gray-200 dark:border-substrateDarkThemeGrey', {
+        'border-transparent dark:border-transparent': mode === 'full' && !isScrolled,
+        'bg-transparent transition-colors border-transparent dark:border-transparent': header === 'home' && !isScrolled,
+        'bg-white dark:bg-substrateDarkest': header === 'default' || (header === 'home' && isScrolled),
+        'duration-75': header === 'home' && !isScrolled,
+        'duration-200': header === 'home' && isScrolled,
+      })}
     >
       <div className="px-4 xl:px-12">
         <div
-          className={cx(
-            "flex items-center justify-between transition-height ease-in-out",
-            {
-              "h-24": !isScrolled,
-              "h-16": isScrolled,
-            }
-          )}
+          className={cx('flex items-center justify-between transition-height ease-in-out', {
+            'h-24': !isScrolled,
+            'h-16': isScrolled,
+          })}
         >
           <div className="w-40 relative transform transition-all duration-300 ease-in-out hover:opacity-50">
             <Link to={WEBSITE_URL} aria-label="Substrate home">
@@ -61,10 +53,7 @@ const Header = ({ mode, header }) => {
             </Link>
           </div>
           <div className="lg:hidden cursor-pointer" onClick={toggleMenu}>
-            <Icon
-              name="hamburger-toggle"
-              className="fill-current text-black dark:text-white"
-            />
+            <Icon name="hamburger-toggle" className="fill-current text-black dark:text-white" />
           </div>
           {isMobileNavOpen && <NavMobile toggleMenu={toggleMenu} />}
           <div className="hidden lg:flex lg:justify-between lg:items-center w-full">
