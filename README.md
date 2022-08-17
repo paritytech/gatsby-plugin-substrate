@@ -38,6 +38,7 @@ If you encounter any problems when using the plugin, please try the following
 
 1. run `yarn clean` to delete gatsby cache
 2. run `rm -rf node_modules` to remove your node modules
+3. run `git submodule update --init --recursive`
 3. run `git submodule update --remote` to pull the latest version of the plugin
 4. run `yarn` to install the plugin
 
