@@ -18,7 +18,7 @@ const ArticleNav = () => {
 
 const Headings = ({ headings, activeId }) => {
   return (
-    <ul className={cx('p-0 m-0 pr-4 mb-20 list-none transition-all')}>
+    <ul className={cx('p-0 mt-0 ml-1 mr-4 mb-20 list-none transition-all')}>
       <span className="block mb-3 font-semibold">CONTENT</span>
       {headings.map(({ title, id }) => (
         <li key={id} className="p-0 m-0 mb-2">
