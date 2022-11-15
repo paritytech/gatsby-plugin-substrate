@@ -16,13 +16,6 @@ const NavLegal = () => {
       <div className="flex items-center py-4">
         <Link
           className="mr-11 md:mr-0 md:ml-9 transform transition-all duration-300 ease-in-out hover:opacity-50"
-          to={siteMetadata.element}
-          aria-label="Element"
-        >
-          <Icon name="element" />
-        </Link>
-        <Link
-          className="mr-11 md:mr-0 md:ml-9 transform transition-all duration-300 ease-in-out hover:opacity-50"
           to={siteMetadata.stackexchange}
           aria-label="Stack Exchange"
         >
