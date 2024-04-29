@@ -6,7 +6,7 @@ import { NavFooter } from './NavFooter';
 import { NavLegal } from './NavLegal';
 import { Newsletter } from './Newsletter';
 
-const Footer = ({ showNewsletter = true }) => {
+const Footer = ({ showNewsletter = false }) => {
   return (
     <footer className="w-full px-4 xl:px-12 bg-substrateDark text-white font-body border-t border-gray-200 dark:border-gray-700">
       {showNewsletter && <Newsletter layout="default" />}
