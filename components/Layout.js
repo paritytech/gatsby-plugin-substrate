@@ -56,7 +56,7 @@ const Layout = ({
   hasArticleNav = false,
   hasBreadcrumbs = true,
   navSidebarData = [],
-  showFooterNewsletter = true,
+  showFooterNewsletter = false,
 }) => {
   useEffect(() => {
     AOS.init({
