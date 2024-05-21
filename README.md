@@ -59,3 +59,9 @@ e.g
 ```js
 <CloseIcon classNames="fill-current">
 ```
+
+### How to update plugin
+1. Make changes to the plugin within this repo (open PR / merge etc.)
+2. Navigate to the substrate website or substrate docs repo
+3. Open a new branch
+4. Run the following command: `git submodule update --remote` to update to the most recent commit on the plugin.
