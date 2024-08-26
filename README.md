@@ -8,7 +8,7 @@
 
 Otherwise you can run the following command to update the local plugin
 
-`git submodule update --remote`
+`git submodule update --remote` or `git submodule update --init`
 
 2. Add `"gatsby-plugin-substrate": "./plugins/gatsby-plugin-substrate"` as a dependency in your `package.json`
 
