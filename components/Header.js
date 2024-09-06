@@ -11,7 +11,7 @@ import { NavMain } from './NavMain';
 import { NavMobile } from './NavMobile';
 import { ThemeToggle } from './ThemeToggle';
 
-const Header = ({ mode, header }) => {
+const Header = ({ mode, header, announcementBanner }) => {
   const scroll = useScrollListener();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -39,6 +39,7 @@ const Header = ({ mode, header }) => {
         'duration-200': header === 'home' && isScrolled,
       })}
     >
+      {announcementBanner}
       <div className="px-4 xl:px-12">
         <div
           className={cx('flex items-center justify-between transition-height ease-in-out', {
