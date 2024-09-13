@@ -53,6 +53,7 @@ const Layout = ({
   mode = 'default',
   header = 'default',
   children,
+  announcementBanner,
   hasArticleNav = false,
   hasBreadcrumbs = true,
   navSidebarData = [],
@@ -68,7 +69,7 @@ const Layout = ({
   return (
     <>
       <Banner />
-      <Header mode={mode} header={header} />
+      <Header mode={mode} header={header} announcementBanner={announcementBanner} />
       <main
         className={cx('min-h-screen', {
           'mt-12': layout === 'default',
